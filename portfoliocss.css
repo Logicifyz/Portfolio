@@ -1,0 +1,1745 @@
+/*
+Name: Wee Zhi Yang
+Admin No. : 220890R
+Class: IT2301 
+Website: Porfolio Website
+*/
+
+/*Imports*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+html {
+  scroll-behavior: smooth;
+  --bg:white;
+  --bg-dark:black;
+  --text-color: #000;
+  --text-color-dark: #fff;
+  
+}
+
+*, *::before, *::after {
+    margin: 0 auto;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: monospace, 'Lato','Oswald','Poppins','Sans-serif';
+    /*background-color: #000;
+    color: #fff;*/
+    
+}
+
+* ::selection {
+    color: white;
+    background: black;
+  }
+
+body {
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
+
+}
+div {
+  display: block;
+}
+/*Scroll animation*/
+
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+/* Scroll animation */
+
+.navbar{
+    height: 10vh;
+  /*Flex Box*/  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-flow: wrap;
+}
+
+/* Hamburger menu */
+
+.nav-links{
+    position: fixed;
+    top: 0;
+    /*left: -100%;*/
+    right: -100%;
+    height: 100%;
+    width: 100%;
+    background-color: var(--bg-dark);
+    z-index: 2;
+    /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+    /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+    /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+    transition: all 0.6s ease-in-out;
+  }
+  #active:checked ~ .nav-links{
+    /*left: 0;*/
+    right:0;
+  }
+  .menu-btn{
+    position: absolute;
+    z-index: 3;
+    right: 20px;
+    /*left: 20px; */
+    top: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    /*color: #fff;*/
+    /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+    /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+    /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+    transition: all 0.3s ease-in-out;
+  }
+  .menu-btn span,
+  .menu-btn:before,
+  .menu-btn:after{
+      content: "";
+      position: absolute;
+      top: calc(50% - 1px);
+      left: 30%;
+      width: 40%;
+      border-bottom: 2px solid #000;
+      transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+      z-index: 3;
+
+  }
+  .menu-btn:before{
+    transform: translateY(-8px);
+  }
+  .menu-btn:after{
+    transform: translateY(8px);
+  }
+  
+  
+  .close {
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      transition: background .6s;
+  }
+  
+  /* closing animation */
+  #active:checked + .menu-btn span {
+      transform: scaleX(0);
+  }
+  #active:checked + .menu-btn:before {
+      transform: rotate(45deg);
+    border-color: var(--bg);
+  }
+  #active:checked + .menu-btn:after {
+      transform: rotate(-45deg);
+    border-color: var(--bg);
+  }
+  .nav-links ul{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    height: 90%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+    
+  }
+  .nav-links ul li{
+    height: 10%;
+    margin: 15px 0;
+    
+  }
+  .nav-links ul li a{
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 5px 30px;
+    color: var(--text-color-dark);
+    border-radius: 50px;
+    position: absolute;
+    line-height: 50px;
+    margin: 5px 30px;
+    opacity: 0;
+    
+    transition: all 0.3s ease;
+    transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .nav-links ul li a:after{
+    position: absolute;
+    content: "";
+    background: var(--bg); 
+    /*background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);*/
+    /*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 50px;
+    transform: scaleY(0);
+    z-index: -1;
+    transition: transform 0.3s ease;
+  }
+  .nav-links ul li a:hover:after{
+    transform: scaleY(1);
+  }
+  .nav-links ul li a:hover{
+    color: var(--text-color);
+  }
+  input[type="checkbox"]{
+    display: none;
+  }
+  .content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    text-align: center;
+    width: 100%;
+    color:var(--text-color);
+  }
+  .content .title{
+    font-size: 40px;
+    font-weight: 700;
+  }
+  .content p{
+    font-size: 35px;
+    font-weight: 600;
+  }
+  
+  #active:checked ~ .nav-links ul li a{
+    opacity: 1;
+  }
+  .nav-links ul li a{
+    transition: opacity 1.2s, transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateX(100px);
+  }
+  #active:checked ~ .nav-links ul li a{
+      transform: none;
+      transition-timing-function: ease, cubic-bezier(.1,1.3,.3,1); /* easeOutBackを緩めた感じ */
+     transition-delay: .6s;
+    transform: translateX(-100px);
+  }
+  
+/* End Navigation Bar */
+
+
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Home Page!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+/*Clock function*/
+.clock {
+    font-size: 1.9em;
+    font-family: monospace;
+    overflow: hidden;
+    position: absolute;
+    left: 20px; 
+    top: 20px;
+
+    animation: ease;
+  }
+
+/* End Clock function */
+
+/* Typing Text.. */
+
+.cover {
+    height: 28vh;
+    /*This part is important for centering*/
+    display: grid;
+    place-items: center;
+  }
+  
+  .typing {
+    width: 40ch;
+    animation: typing 3s steps(40), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 3em;
+  }
+
+
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
+
+/* End of Typing Text.. */
+
+/*Images*/
+.tracks{
+  height: 75%;
+}
+
+#image-track {
+  display: flex;
+  gap: 4vmin;
+  position: absolute;
+  left: 45%;
+  top: 62%;
+  transform: translate(0%, -50%); 
+  user-select: none; /* -- Prevent image highlighting -- */
+}
+
+#image-track > .image {
+  width: 40vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% center;
+  
+}
+
+/* End of Images */
+
+/*Sections*/
+.pagelink {
+  background-color: var(--bg-dark);
+  color: var(--text-color-dark);
+  display: block;
+  place-items: center;
+  height: 130vh;
+}
+
+.pagelink-white {
+  background-color:var(--bg);
+  color: var(--text-color);
+  display: block;
+  place-items: center;
+  height: 130vh;
+  min-height: 100vh;
+  min-width: 100vw;
+ 
+}
+
+
+/* End of Sections */
+.aboutmetitlecover{
+  height: 28vh;
+  /*This part is important for centering*/
+  display: grid;
+  place-items: center; 
+}
+.aboutmetitle{
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 5.5em;
+  font-weight: bold;
+}
+.aboutmecover{
+  height: 32vh;
+  /*This part is important for centering*/
+  display: grid;
+  place-items: top;
+  text-align: center;
+}
+.aboutme{
+  color: var(--text-color);
+  max-width: 65%;
+  font-family: monospace;
+  font-size: 1.5em;
+}
+
+.aboutme p {
+line-height: 1.7;
+}
+
+.icontitlecover{
+  height: 8vh;
+  /*This part is important for centering*/
+  display: grid;
+  text-align: center;
+}
+
+.icontitle{
+  max-width: 65%;
+  font-family: monospace;
+  font-size: 1.5em;
+}
+/*About me Icons */
+.icon-row {
+  height: 28vh;
+  display: flex;
+}
+
+.icon-wrapper {
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+  color: var(--text-color);
+}
+
+.icon-wrapper i {
+  font-size: 3.5em;
+  color: var(--text-color);
+}
+
+.icon-label {
+  margin-top: .3em;
+  font-size: 2em;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.icon-wrapper:hover {
+  transform: scale(1.2);
+}
+/*end of About me Icons */
+
+.moreaboutmecover{
+  height: 18vh;
+  margin-top: 5vh;
+  /*This part is important for centering*/
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.moreaboutme{
+  max-width: 65%;
+  font-family: monospace;
+  font-size: 1.5em;
+}
+/* ABout me page link button */
+.button {
+  position: relative;
+  padding: .7em 1.8em;
+  outline: none;
+  font-family: monospace;
+  border: 1px solid #303030;
+  background: #212121;
+  color: var(--text-color-dark) ;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 2em;
+  overflow: hidden;
+  transition: 0.2s;
+  border-radius: 20px;
+  cursor: pointer;
+
+ }
+ 
+ .button:hover {
+  box-shadow: 0 0 10px #ae00ff, 0 0 25px #001eff, 0 0 50px #ae00ff;
+  transition-delay: 0.6s;
+ }
+ 
+ .button span {
+  position: absolute;
+ }
+ 
+ .button span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ae00ff);
+ }
+ 
+ .button:hover span:nth-child(1) {
+  left: 100%;
+  transition: 0.7s;
+ }
+ 
+ .button span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #001eff);
+ }
+ 
+ .button:hover span:nth-child(3) {
+  right: 100%;
+  transition: 0.7s;
+  transition-delay: 0.35s;
+ }
+ 
+ .button span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #ae00ff);
+ }
+ 
+ .button:hover span:nth-child(2) {
+  top: 100%;
+  transition: 0.7s;
+  transition-delay: 0.17s;
+ }
+ 
+ .button span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #001eff);
+ }
+ 
+ .button:hover span:nth-child(4) {
+  bottom: 100%;
+  transition: 0.7s;
+  transition-delay: 0.52s;
+ }
+ 
+ .button:active {
+  background: #ae00af;
+  background: linear-gradient(to top right, #ae00af, #001eff);
+  color: #bfbfbf;
+  box-shadow: 0 0 8px #ae00ff, 0 0 8px #001eff, 0 0 8px #ae00ff;
+  transition: 0.1s;
+ }
+ 
+ .button:active span:nth-child(1) 
+  span:nth-child(2) 
+  span:nth-child(2) 
+  span:nth-child(2) {
+  transition: none;
+  transition-delay: none;
+ }
+ /* End of About me page link button */
+
+ /* Gallery Section */
+ .gallerytitlecover {
+  height: 24vh;
+  /*This part is important for centering*/
+  display: grid;
+  place-items: center; 
+}
+.gallerytitle {
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 5.5em;
+  font-weight: bold;
+}
+.aboutgallerycover{
+  height: 12vh;
+  /*This part is important for centering*/
+  display: grid;
+  place-items: top;
+  text-align: center;
+}
+.aboutgallery{
+  max-width: 65%;
+  font-family: monospace;
+  font-size: 1.5em;
+}
+
+/* small Image sections */
+
+.imagegrid {
+  --gap: 16px;
+  --num-cols: 4;
+  --row-height: 300px;
+
+  box-sizing: border-box;
+  padding: var(--gap);
+
+  display: grid;
+  grid-template-columns: repeat(var(--num-cols), 1fr); /* 4 equal width columns */
+  grid-auto-rows: var(--row-height); /* 300px rows */
+  gap : var(--gap); /* 16 px gap between imgs */
+  width: 80%;
+}
+
+.imagegrid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /*maintain aspect ratio*/
+  user-select: none; /* -- Prevent image highlighting -- */
+}
+
+.imagegrid-col-2 { /* span 2 columns */
+  grid-column: span 2;
+}
+
+.imagegrid-row-2 { /* span 2 rows */
+  grid-row: span 2;
+}
+
+
+
+/* End of small Image sections */
+
+.moregallerycover{
+  height: 18vh;
+  margin-top: 5vh;
+  /*This part is important for centering*/
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.moregallery{
+  max-width: 65%;
+  font-family: monospace;
+  font-size: 1.5em;
+  color: var(--text-color);
+}
+
+/* Gallery page link button */
+.button2 {
+  position: relative;
+  padding: .5em 1.6em;
+  outline: none;
+  font-family: monospace;
+  border: 1px solid #303030;
+  background: #000000;
+  color: var(--text-color-dark) ;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.7em;
+  overflow: hidden;
+  transition: 0.2s;
+  border-radius: 10px;
+  cursor: pointer;
+
+ }
+ 
+ .button2:hover {
+  box-shadow: 0 0 10px #ae00ff, 0 0 25px #001eff, 0 0 50px #ae00ff;
+  transition-delay: 0.6s;
+ }
+ 
+ .button2 span {
+  position: absolute;
+ }
+ 
+ .button2 span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ae00ff);
+ }
+ 
+ .button2:hover span:nth-child(1) {
+  left: 100%;
+  transition: 0.7s;
+ }
+ 
+ .button2 span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #001eff);
+ }
+ 
+ .button2:hover span:nth-child(3) {
+  right: 100%;
+  transition: 0.7s;
+  transition-delay: 0.35s;
+ }
+ 
+ .button2 span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #ae00ff);
+ }
+ 
+ .button2:hover span:nth-child(2) {
+  top: 100%;
+  transition: 0.7s;
+  transition-delay: 0.17s;
+ }
+ 
+ .button2 span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #001eff);
+ }
+ 
+ .button2:hover span:nth-child(4) {
+  bottom: 100%;
+  transition: 0.7s;
+  transition-delay: 0.52s;
+ }
+ 
+ .button2:active {
+  background: #ae00af;
+  background: linear-gradient(to top right, #ae00af, #001eff);
+  color: #bfbfbf;
+  box-shadow: 0 0 8px #ae00ff, 0 0 8px #001eff, 0 0 8px #ae00ff;
+  transition: 0.1s;
+ }
+ 
+ .button2:active span:nth-child(1) 
+  span:nth-child(2) 
+  span:nth-child(2) 
+  span:nth-child(2) {
+  transition: none;
+  transition-delay: none;
+ }
+
+/* End of Gallery page link button */
+/* End of Gallery Section */
+
+
+/*Start of socials section */
+
+
+.socialscover {
+  height: 8vh;
+
+  /*This part is important for centering*/
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.socialtitlecover{
+  height: 24vh;
+
+  /*This part is important for centering*/
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.socialtitle {
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 5.5em;
+  font-weight: bold;
+}
+
+
+.socials{
+  max-width: 65%;
+  font-family: monospace;
+  font-size: 1.5em;
+  color: var(--text-color);
+
+  
+}
+
+.orsocialscover{
+  height: 18vh;
+  margin-top: 5vh;
+  /*This part is important for centering*/
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.orsocials{
+  max-width: 65%;
+  font-family: monospace;
+  font-size: 1.5em;
+  color: var(--text-color);
+}
+
+/*Social Icons*/
+
+.biggerwrapper {
+  display:grid;
+  height: 28vh;
+}
+
+.iconwrapper {
+  display: inline-flex;
+  list-style: none;
+  place-items: center;
+}
+
+.iconwrapper .icon {
+  position: relative;
+  background: var(--bg);
+  border-radius: 50%;
+  padding: 60px;
+  margin: 55px;
+  width: 95px;
+  height: 95px;
+  font-size: 62px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.iconwrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 24px;
+  background: var(--bg);
+  color: var(--text-color);
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.iconwrapper .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: var(--bg);
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.iconwrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.iconwrapper .icon:hover span,
+.iconwrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.1);
+}
+
+.iconwrapper .facebook:hover,
+.iconwrapper .facebook:hover .tooltip,
+.iconwrapper .facebook:hover .tooltip::before {
+  background: #1877F2;
+  color: #ffffff;
+}
+
+.iconwrapper .telegram:hover,
+.iconwrapper .telegram:hover .tooltip,
+.iconwrapper .telegram:hover .tooltip::before {
+  background: #1DA1F2;
+  color: #ffffff;
+}
+
+.iconwrapper .instagram:hover,
+.iconwrapper .instagram:hover .tooltip,
+.iconwrapper .instagram:hover .tooltip::before {
+  background: #E4405F;
+  color: #ffffff;
+}
+
+.iconwrapper .github:hover,
+.iconwrapper .github:hover .tooltip,
+.iconwrapper .github:hover .tooltip::before {
+  background: #333333;
+  color: #ffffff;
+}
+
+.iconwrapper .youtube:hover,
+.iconwrapper .youtube:hover .tooltip,
+.iconwrapper .youtube:hover .tooltip::before {
+  background: #CD201F;
+  color: #ffffff;
+}
+
+/*End of social icons*/
+
+/*Back to top button*/
+.backtotopcover {
+  height: 12vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.backtotopcover a{
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+ }
+ 
+ a.back-top {
+  width: 12rem;
+  height: auto;
+  display: block;
+  place-items: center;
+ }
+ 
+ a.back-top .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: var(--bg-dark);
+  border-radius: 1.625rem;
+ }
+ 
+ a.back-top .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: var(--bg);
+ }
+ 
+ a.back-top .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+ }
+ 
+ a.back-top .circle .icon.arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.29rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid var(--bg);
+  border-right: 0.125rem solid var(--bg);
+  transform: rotate(45deg);
+ }
+ 
+ a.back-top .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: var(--bg-dark);
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+ }
+ 
+ a.back-top:hover .circle {
+  width: 100%;
+ }
+ 
+ a.back-top:hover .circle .icon.arrow {
+  background: var(--bg);
+  transform: translate(1rem, 0);
+ }
+ 
+ a.back-top:hover .button-text {
+  color: var(--bg);
+ }
+
+/*End of Back to top button*/
+
+/*Home page media queries*/
+
+@media (max-width:1231px){
+  .typing {
+    border-right: 2px solid;
+    font-size: 2.5em;
+  }
+  .pagelink {
+    height: 150vh;
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+  
+  .pagelink-white {
+    height: 150vh;
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+  .aboutmetitlecover{
+    height: 24vh;
+  }
+  .aboutmetitle{
+    font-size: 5em;
+  }
+  .aboutmecover{
+    height: 36vh;
+  }
+  .aboutme{
+    font-size: 1.4em;
+  }
+  
+  .icontitlecover{
+    height: 6vh;
+  }
+  
+  .icontitle{
+    font-size: 1.4em;
+  }
+  /*About me Icons */
+  .icon-row {
+    height: 24vh;
+  }
+  
+  .icon-wrapper i {
+    font-size: 3em;
+    color: var(--text-color);
+  }
+  
+  .icon-label {
+    margin-top: .3em;
+    font-size: 1.7em;
+    text-align: center;
+    color: var(--text-color);
+  }
+  /*end of About me Icons */
+  
+  .moreaboutmecover{
+    height: 16vh;
+  }
+  .moreaboutme{
+    font-size: 1.3em;
+  }
+  /* ABout me page link button */
+  .button {
+    padding: .6em 1.7em;
+    font-size: 1.9em;
+   }
+
+
+  .gallerytitlecover {
+    height: 22vh;
+  }
+  .gallerytitle {
+    font-size: 5em;
+  }
+  .aboutgallerycover{
+    height: 10vh;
+    /*This part is important for centering*/
+    display: grid;
+    place-items: top;
+    text-align: center;
+  }
+  .aboutgallery{
+    font-size: 1.4em;
+  }
+
+  .imagegrid {
+    --num-cols: 2;
+    --row-height: 250px;
+  }
+
+  .moregallerycover{
+    height: 16vh;
+    margin-top: 5vh;
+  }
+  .moregallery{
+    font-size: 1.4em;
+  }
+  
+  /* Gallery page link button */
+  .button2 {
+    padding: .4em 1.5em;
+    font-size: 1.6em;
+  }
+  .socialscover {
+    height: 6vh;
+  }
+  
+  .socialtitlecover{
+    height: 22vh;
+  }
+  
+  .socialtitle {
+    font-size: 5em;
+
+  }
+  .socials{
+    font-size: 1.3em;
+  }
+  
+  .orsocialscover{
+    height: 16vh;
+    margin-top: 5vh;
+  }
+  
+  .orsocials{
+    font-size: 1.3em;
+  }
+  
+  /*Social Icons*/
+  
+  .biggerwrapper {
+    display:grid;
+    height: 24vh;
+  }
+  .iconwrapper .icon {
+    padding: 40px;
+    margin: 35px;
+    width: 75px;
+    height: 75px;
+    font-size: 42px;
+    
+  }
+}
+
+@media (max-width:824px){
+  .typing {
+    border-right: 1.5px solid;
+    font-size: 2em;
+  }
+  .pagelink {
+    height: 170vh;
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+  
+  .pagelink-white {
+    height: 170vh;
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+  .aboutmetitlecover{
+    height: 22vh;
+  }
+  .aboutmetitle{
+    font-size: 4.5em;
+  }
+  .aboutmecover{
+    height: 38vh;
+  }
+  .aboutme{
+    font-size: 1.2em;
+  }
+  
+  .icontitlecover{
+    height: 4vh;
+  }
+  
+  .icontitle{
+    font-size: 1.3em;
+  }
+  /*About me Icons */
+  .icon-row {
+    height: 22vh;
+  }
+  
+  .icon-wrapper i {
+    font-size: 2.5em;
+  }
+  
+  .icon-label {
+    margin-top: .3em;
+    font-size: 1.6em;
+    text-align: center;
+    color: var(--text-color);
+  }
+  /*end of About me Icons */
+  
+  .moreaboutmecover{
+    height: 14vh;
+  }
+  .moreaboutme{
+    font-size: 1.2em;
+  }
+  /* ABout me page link button */
+  .button {
+    padding: .5em 1.6em;
+    font-size: 1.8em;
+   }
+   .gallerytitlecover {
+    height: 20vh;
+  }
+  .gallerytitle {
+    font-size: 4.5em;
+  }
+  .aboutgallerycover{
+    height: 8vh;
+    /*This part is important for centering*/
+    display: grid;
+    place-items: top;
+    text-align: center;
+  }
+  .aboutgallery{
+    font-size: 1.2em;
+  }
+
+  .imagegrid {
+    --num-cols: 2;
+    --row-height: 250px;
+  }
+
+  .moregallerycover{
+    height: 14vh;
+    margin-top: 5vh;
+  }
+  .moregallery{
+    font-size: 1.4em;
+  }
+  
+  /* Gallery page link button */
+  .button2 {
+    padding: .3em 1.4em;
+    font-size: 1.4em;
+  }
+  .socialscover {
+    height: 4vh;
+  }
+  
+  .socialtitlecover{
+    height: 20vh;
+  }
+  
+  .socialtitle {
+    font-size: 4.5em;
+
+  }
+  .socials{
+    font-size: 1.2em;
+  }
+  
+  .orsocialscover{
+    height: 14vh;
+    margin-top: 5vh;
+  }
+  
+  .orsocials{
+    font-size: 1.2em;
+  }
+  
+  /*Social Icons*/
+  
+  .biggerwrapper {
+    display:grid;
+    height: 22vh;
+  }
+  .iconwrapper .icon {
+    padding: 30px;
+    margin: 25px;
+    width: 55px;
+    height: 55px;
+    font-size: 32px;
+    
+  }
+}
+
+@media (max-width:624px){
+  .typing {
+    border-right: 1px solid;
+    font-size: 1.5em;
+  }
+  .pagelink {
+    height: 190vh;
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+  
+  .pagelink-white {
+    height: 190vh;
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+  .aboutmetitlecover{
+    height: 20vh;
+  }
+  .aboutmetitle{
+    font-size: 4em;
+  }
+  .aboutmecover{
+    height: 40vh;
+  }
+  .aboutme{
+    font-size: 1em;
+  }
+  
+  .icontitlecover{
+    height: 4vh;
+  }
+  
+  .icontitle{
+    font-size: 1.1em;
+  }
+  /*About me Icons */
+  .icon-row {
+    height: 20vh;
+  }
+  
+  .icon-wrapper i {
+    font-size: 2em;
+  }
+  
+  .icon-label {
+    margin-top: .3em;
+    font-size: 1.4em;
+    text-align: center;
+    color: var(--text-color);
+  }
+  /*end of About me Icons */
+  
+  .moreaboutmecover{
+    height: 12vh;
+  }
+  .moreaboutme{
+    font-size: 1em;
+  }
+  /* ABout me page link button */
+  .button {
+    padding: .4em 1.5em;
+    font-size: 1.6em;
+   }
+  
+   .gallerytitlecover {
+    height: 18vh;
+  }
+  .gallerytitle {
+    font-size: 4em;
+  }
+  .aboutgallerycover{
+    height: 6vh;
+    /*This part is important for centering*/
+    display: grid;
+    place-items: top;
+    text-align: center;
+  }
+  .aboutgallery{
+    font-size: 1em;
+  }
+
+  .imagegrid {
+    --num-cols: 2;
+    --row-height: 250px;
+  }
+
+  .moregallerycover{
+    height: 12vh;
+    margin-top: 5vh;
+  }
+  .moregallery{
+    font-size: 1.2em;
+  }
+  
+  /* Gallery page link button */
+  .button2 {
+    padding: .2em 1.3em;
+    font-size: 1.3em;
+  }
+  .socialscover {
+    height: 2vh;
+  }
+  
+  .socialtitlecover{
+    height: 18vh;
+  }
+  
+  .socialtitle {
+    font-size: 4em;
+
+  }
+  .socials{
+    font-size: 1em;
+  }
+  
+  .orsocialscover{
+    height: 12vh;
+    margin-top: 5vh;
+  }
+  
+  .orsocials{
+    font-size: 1em;
+  }
+  
+  /*Social Icons*/
+  
+  .biggerwrapper {
+    display:grid;
+    height: 20vh;
+  }
+  .iconwrapper .icon {
+    padding: 20px;
+    margin: 15px;
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+    
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*End of socials section */
+
+
+/* Footer */
+
+
+footer {
+  margin-top: 20vh;
+  background-color: var(--bg);
+  padding: 20px 0;
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+
+footer .copyright {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+@media screen and (max-width: 600px) {
+  footer{
+    margin-top: 60vh;
+  }
+}
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Contact Page!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+.contactsection{
+  height: 100vh;
+/*Flex Box*/  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+@media screen and (max-width: 1200px) {
+  .contactimage{
+    width: 40%;
+  }
+  .contactbox{
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contactimage{
+    width: 90%;
+    margin: auto;
+  }
+  .contactbox{
+    width: 100%;
+  }
+  .contactimage img{
+    height: 80%;
+    width: 80%;
+    margin-right: auto;
+  }
+}
+
+.contactimage{
+  margin: auto 0 auto auto;
+}
+.contactimage img {
+  height: 80%;
+  width: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+.contactbox {
+  width: 40%;
+  padding: 40px;
+  margin: 10vh auto;
+
+  background: var(--bg);
+  box-sizing: border-box;
+
+  border-radius: 10px;
+}
+
+.contactbox p:first-child {
+  margin: 0 0 30px;
+  padding: 0;
+  color: var(--text-color);
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+}
+
+.contactbox .inputbox {
+  position: relative;
+}
+
+.contactbox .inputbox input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--text-color);
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid var(--text-color);
+  outline: none;
+  background: transparent;
+}
+
+.contactbox .inputbox textarea{
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--text-color);
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid var(--text-color);
+  outline: none;
+  background: transparent;
+  resize: none;
+}
+
+.contactbox .inputbox label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--text-color);
+  pointer-events: none;
+  transition: .5s;
+}
+
+.contactbox .inputbox textarea:focus ~ label,
+.contactbox .inputbox textarea:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: var(--text-color);
+  font-size: 12px;
+}
+
+.contactbox .inputbox input:focus ~ label,
+.contactbox .inputbox input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: var(--text-color);
+  font-size: 12px;
+}
+/* Submit button*/
+.contactbox form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 30px;
+  font-weight: bold;
+  color: var(--text-color);
+  font-size: 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 3px
+}
+
+.contactbox a:hover {
+  background: var(--text-color);
+  color: var(--text-color-dark);
+  border-radius: 5px;
+}
+
+.contactbox a span {
+  position: absolute;
+  display: block;
+}
+
+.contactbox a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--text-color));
+  animation: btn-anim1 1.5s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.contactbox a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--text-color));
+  animation: btn-anim2 1.5s linear infinite;
+  animation-delay: .375s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.contactbox a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, var(--text-color));
+  animation: btn-anim3 1.5s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.contactbox a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, var(--text-color));
+  animation: btn-anim4 1.5s linear infinite;
+  animation-delay: 1.125s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+.contactbox p:last-child {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.contactbox a.a2 {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.contactbox a.a2:hover {
+  background: transparent;
+  color: #aaa;
+  border-radius: 5px;
+}
+
+
+
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!End of Contact Page!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! GALLERY PAGE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+.gallery-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 40px 20px 0 20px;
+}
+
+.gallery-container .galleryh3{
+  width: 40%;
+  padding-bottom: 50px;
+}
+
+.gallery-container .galleryh3 h3{
+  font-size: 4em;
+  font-weight: bolder;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--text-color);
+}
+
+.gallery-container .galleryh3 h3 span{
+  font-weight: bolder; 
+}
+.gallery-container .gallery-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+.gallery-container .gallery-box .galleryimages {
+  display: flex;
+  flex-direction: column;
+  width: 32.5%;
+}
+
+.gallery-container .gallery-box .galleryimages img{
+ width: 100%;
+ padding-bottom: 15px;
+ border-radius: 5px;
+}
+
+@media only screen and (max-width: 769px) {
+  .gallery-container .gallery-box{
+    flex-direction: column;
+  }
+  .gallery-container .gallery-box .galleryimages {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .gallery-container .galleryh3{
+    width: 90%;
+  }
+  
+  .gallery-container .galleryh3 h3{
+    font-size: 2em;
+  }
+  
+}

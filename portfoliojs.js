@@ -96,5 +96,3 @@ const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((eL) => { observer.observe(eL) });
 /* End of scroll animator */
 
-
-

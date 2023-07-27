@@ -96,3 +96,24 @@ const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((eL) => { observer.observe(eL) });
 /* End of scroll animator */
 
+  /* Form submission */
+  document.getElementById("myForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+  
+    const form = event.target;
+    const name = form.elements["name"].value;
+    const email = form.elements["email"].value;
+    const subject = form.elements["subject"].value;
+    const message = form.elements["message"].value;
+  
+    // Hide the form and show the submitted data section
+    form.style.display = "none";
+    document.getElementById("submittedDataSection").style.display = "block";
+  
+    // Display the submitted data
+    document.getElementById("nameResult").textContent = name;
+    document.getElementById("emailResult").textContent = email;
+    document.getElementById("subjectResult").textContent = subject;
+    document.getElementById("messageResult").textContent = message;
+  });
+

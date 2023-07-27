@@ -14,12 +14,6 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> <!-- Font Awesome NOT WORKING-->
-    <script src="https://kit.fontawesome.com/547f70aaf1.js" crossorigin="anonymous"></script>
-
-
 
     
 <!-- End of Imports -->
@@ -49,39 +43,45 @@
     <section class="hidden">
         <div class="contactsection">
             <div class="contactimage">
-                <img src="images/contactimagejpg.jpg"contactus" draggable="false">
+                <img src="images/contactimagejpg.jpg" alt="contactus" draggable="false">
             </div>
         
             <div class="contactbox">
                 <p>Contact Me.</p>
-                <form>
+                <form id="myForm">
                   <div class="inputbox">
-                    <input required="" name="" type="text">
+                    <input required="" name="name" type="text">
                     <label>Name</label>
                   </div>
                   <div class="inputbox">
-                    <input required="" name="" type="text">
+                    <input required="" name="email" type="text">
                     <label>Email</label>
                   </div>
                   <div class="inputbox">
-                    <input required="" name="" type="text">
+                    <input required="" name="subject" type="text">
                     <label>Subject</label>
                   </div>
                    <div class="inputbox">
-                    <textarea name="" required="" id="" cols="40" rows="10"></textarea>
+                    <textarea name="message" required="" id="" cols="40" rows="10"></textarea>
                     <label>Message</label>
                   </div>
-                  <a href="#">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                  <button type="submit" class="submit">
                     Submit
-                  </a>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </button>
                 </form>
-                
-              </div>
-        
+                <!-- Holds the submitted data -->
+                <div id="submittedDataSection" class="submittedDataSection">
+                  <div class="submissionmessage">Thank you for contacting me on the subject <span id="subjectResult"></span>, <span id="nameResult"></span>, I'll get back to you at <span id="emailResult"></span> as soon as I can.</div>
+                  <div class="whilewaiting">While waiting, take a look <a href="homepage.html" class="around">around</a>!</div>
+
+                </div>
+                <!-- The submitted data will be displayed here -->
+            </div>
+            </div>
         </div>
     </section>
 </div>
@@ -99,6 +99,8 @@
       <p>&copy; 2023 Zhi Yang. All rights reserved.</p>
     </div>
 </footer>
+<script>
 
+</script>
 </body>
 </html>

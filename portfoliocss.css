@@ -749,14 +749,14 @@ line-height: 1.7;
 .socials{
   max-width: 65%;
   font-family: monospace;
-  font-size: 1.5em;
+  font-size: 2em;
   color: var(--text-color);
 
   
 }
 
 .orsocialscover{
-  height: 18vh;
+  height: 20vh;
   margin-top: 5vh;
   /*This part is important for centering*/
   display: grid;
@@ -767,7 +767,7 @@ line-height: 1.7;
 .orsocials{
   max-width: 65%;
   font-family: monospace;
-  font-size: 1.5em;
+  font-size: 2em;
   color: var(--text-color);
 }
 
@@ -789,7 +789,7 @@ line-height: 1.7;
   background: var(--bg);
   border-radius: 50%;
   padding: 60px;
-  margin: 55px;
+  margin: 75px;
   width: 95px;
   height: 95px;
   font-size: 62px;
@@ -797,7 +797,6 @@ line-height: 1.7;
   justify-content: center;
   align-items:center;
   flex-direction: column;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -873,6 +872,21 @@ line-height: 1.7;
 .iconwrapper .youtube:hover .tooltip::before {
   background: #CD201F;
   color: #ffffff;
+}
+
+.svgicon {
+  /* Center the SVG icon horizontally */
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  right: 73px;
+}
+
+/* Optionally, you can control the size of the SVG icon */
+.svgicon svg {
+  width: fit-content;
+  height: auto; /* Maintain the aspect ratio */
 }
 
 /*End of social icons*/
@@ -1551,12 +1565,14 @@ footer .copyright {
   font-size: 12px;
 }
 /* Submit button*/
-.contactbox form a {
+.contactbox form .submit {
   position: relative;
   display: inline-block;
-  padding: 10px 30px;
+  padding: 15px 35px;
   font-weight: bold;
   color: var(--text-color);
+  background-color: var(--bg);
+  border: 0;
   font-size: 1em;
   text-decoration: none;
   text-transform: uppercase;
@@ -1566,18 +1582,18 @@ footer .copyright {
   letter-spacing: 3px
 }
 
-.contactbox a:hover {
+.contactbox .submit:hover {
   background: var(--text-color);
   color: var(--text-color-dark);
   border-radius: 5px;
 }
 
-.contactbox a span {
+.contactbox .submit span {
   position: absolute;
   display: block;
 }
 
-.contactbox a span:nth-child(1) {
+.contactbox .submit span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -1596,7 +1612,7 @@ footer .copyright {
   }
 }
 
-.contactbox a span:nth-child(2) {
+.contactbox .submit span:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -1616,7 +1632,7 @@ footer .copyright {
   }
 }
 
-.contactbox a span:nth-child(3) {
+.contactbox .submit span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -1636,7 +1652,7 @@ footer .copyright {
   }
 }
 
-.contactbox a span:nth-child(4) {
+.contactbox .submit span:nth-child(4) {
   bottom: -100%;
   left: 0;
   width: 2px;
@@ -1661,15 +1677,72 @@ footer .copyright {
   font-size: 14px;
 }
 
-.contactbox a.a2 {
+.contactbox .submit.a2 {
   color: var(--text-color);
   text-decoration: none;
 }
 
-.contactbox a.a2:hover {
+.contactbox .submit.a2:hover {
   background: transparent;
   color: #aaa;
   border-radius: 5px;
+}
+
+/* Style for the submitted data section */
+.submittedDataSection {
+  display: none;
+  width: 100%;
+  margin-top: 6vh;
+}
+.submittedDataSection .submissionmessage{
+  text-align: center;
+  font-size: 1.7em;
+  line-height: 40px;
+  color: var(--text-color);
+}
+
+.whilewaiting {
+  margin-top: 6vh;
+  text-align: center;
+  font-size: 1.6em;
+  line-height: 40px;
+  color: var(--text-color);
+}
+.around {
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-decoration:none;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+.around:focus,
+.around:hover {
+  color: var(--text-color);
+}
+
+.around:focus:after,
+.around:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.around:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: var(--text-color);
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
 }
 
 

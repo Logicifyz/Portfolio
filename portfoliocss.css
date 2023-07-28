@@ -883,7 +883,6 @@ line-height: 1.7;
   right: 73px;
 }
 
-/* Optionally, you can control the size of the SVG icon */
 .svgicon svg {
   width: fit-content;
   height: auto; /* Maintain the aspect ratio */
@@ -999,13 +998,13 @@ line-height: 1.7;
     font-size: 2.5em;
   }
   .pagelink {
-    height: 150vh;
+    height: 170vh;
     min-height: 100vh;
     min-width: 100vw;
   }
   
   .pagelink-white {
-    height: 150vh;
+    height: 170vh;
     min-height: 100vh;
     min-width: 100vw;
   }
@@ -1085,6 +1084,7 @@ line-height: 1.7;
   .moregallerycover{
     height: 16vh;
     margin-top: 5vh;
+    
   }
   .moregallery{
     font-size: 1.4em;
@@ -1128,7 +1128,7 @@ line-height: 1.7;
   }
   .iconwrapper .icon {
     padding: 40px;
-    margin: 35px;
+    margin: 65px;
     width: 75px;
     height: 75px;
     font-size: 42px;
@@ -1142,13 +1142,13 @@ line-height: 1.7;
     font-size: 2em;
   }
   .pagelink {
-    height: 170vh;
+    height: 190vh;
     min-height: 100vh;
     min-width: 100vw;
   }
   
   .pagelink-white {
-    height: 170vh;
+    height: 190vh;
     min-height: 100vh;
     min-width: 100vw;
   }
@@ -1268,7 +1268,7 @@ line-height: 1.7;
   }
   .iconwrapper .icon {
     padding: 30px;
-    margin: 25px;
+    margin: 55px;
     width: 55px;
     height: 55px;
     font-size: 32px;
@@ -1282,13 +1282,13 @@ line-height: 1.7;
     font-size: 1.5em;
   }
   .pagelink {
-    height: 190vh;
+    height: 2100vh;
     min-height: 100vh;
     min-width: 100vw;
   }
   
   .pagelink-white {
-    height: 190vh;
+    height: 210vh;
     min-height: 100vh;
     min-width: 100vw;
   }
@@ -1409,7 +1409,7 @@ line-height: 1.7;
   }
   .iconwrapper .icon {
     padding: 20px;
-    margin: 15px;
+    margin: 45px;
     width: 45px;
     height: 45px;
     font-size: 22px;
